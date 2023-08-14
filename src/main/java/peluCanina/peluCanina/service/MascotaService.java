@@ -62,8 +62,6 @@ public class MascotaService implements IMascotaService {
 //        this.traerMascota(mas.getId()).setObservaciones(mas.getObservaciones());
 
 
-
-
         this.crearMascota(mas);
 
     }
@@ -76,12 +74,12 @@ public class MascotaService implements IMascotaService {
 
     @Override
     public void validar(String nombre,
-            String raza,
-            String color,
-            String alergico,
-            String atencionEspecial,
-            String observaciones,
-            Duenio duenio) throws MiException {
+                        String raza,
+                        String color,
+                        String alergico,
+                        String atencionEspecial,
+                        String observaciones,
+                        Duenio duenio) throws MiException {
 
         if (raza.isEmpty() || raza == null) {
             throw new MiException("La raza no puede ser nula o estar vacía");

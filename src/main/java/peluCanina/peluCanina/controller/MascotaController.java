@@ -98,6 +98,12 @@ public class MascotaController {
                     observaciones, duenio.getIdMascota(), duenio.getNombreMascota());
 
             mascoSer.editarMascota(mas);
+
+
+            duenio.setIdMascota(id);
+            duenio.setNombre(nombre);
+            duenioSer.editarDuenio(duenio);
+
             modelo.put("exito", "mascota editada correctamente");
             return "redirect:../lista";
 

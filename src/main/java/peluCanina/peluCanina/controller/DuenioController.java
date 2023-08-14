@@ -11,6 +11,7 @@ import peluCanina.peluCanina.entity.Duenio;
 import peluCanina.peluCanina.service.IDuenioService;
 
 import java.util.List;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import peluCanina.peluCanina.entity.Mascota;
@@ -34,7 +35,7 @@ public class DuenioController {
 
     @PostMapping("/crear")
     public String crearDueni(@RequestParam String nombre,
-            @RequestParam String celular, @RequestParam String direccion, ModelMap modelo) {
+                             @RequestParam String celular, @RequestParam String direccion, ModelMap modelo) {
 
         Duenio duen = new Duenio();
         duen.setNombre(nombre);
@@ -92,7 +93,7 @@ public class DuenioController {
     }
 
     @GetMapping("/borrar/{id}")
-    public String borrarDuenio(RedirectAttributes redirectAttributes, @PathVariable Long id, ModelMap modelo) {
+    public String borrarDuenio(RedirectAttributes redirectAttributes, @PathVariable Long id, ModelMap modelo) throws MiException {
 
 //        try {
 //            Duenio duen = duenioSer.traerDuenio(id);
@@ -103,7 +104,17 @@ public class DuenioController {
 //                mascoSer.editarMascota(mascota);
 //                
 //            }
-//            
+//
+        for (Mascota mascot : mascoSer.listarMascotas()) {
+            if (mascot.getIdDuenio() == id) {
+                mascot.setIdDuenio(null);
+                mascot.setNombreDuenio(null);
+
+                mascoSer.editarMascota(mascot);
+            }
+        }
+
+
         duenioSer.borrarDuenio(id);
         return "redirect:../lista";
 //        } catch (MiException e) {
