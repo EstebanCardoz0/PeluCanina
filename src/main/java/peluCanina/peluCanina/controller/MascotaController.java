@@ -39,9 +39,9 @@ public class MascotaController {
 
     @PostMapping("/crear")
     public String crearMascota(@RequestParam String nombre, @RequestParam String color, @RequestParam String raza,
-                               @RequestParam String alergico, @RequestParam String atencionEspecial,
-                               @RequestParam String observaciones, @RequestParam(required = false) Duenio duenio,
-                               ModelMap modelo) {
+            @RequestParam String alergico, @RequestParam String atencionEspecial,
+            @RequestParam String observaciones, @RequestParam(required = false) Duenio duenio,
+            ModelMap modelo) {
 
         Mascota mas = new Mascota();
         mas.setNombre(nombre);
@@ -53,7 +53,8 @@ public class MascotaController {
 
         mas.setObservaciones(observaciones);
 
-        mas.setDuenio(duenio);
+        mas.setIdDuenio(duenio.getId());
+        mas.setNombreDuenio(duenio.getNombre());
 
         mascoSer.crearMascota(mas);
 
@@ -90,16 +91,15 @@ public class MascotaController {
 
     @PostMapping("/editar/{id}")
     public String editar(@PathVariable Long id, String nombre, String raza, String color, String observaciones,
-                         String alergico, String atencionEspecial, Duenio duenio, ModelMap modelo) {
+            String alergico, String atencionEspecial, Duenio duenio, ModelMap modelo) {
 
         try {
-            Mascota mas = new Mascota(id, nombre, raza, color, alergico, atencionEspecial, observaciones, duenio);
-
+            Mascota mas = new Mascota(id, nombre, raza, color, alergico, atencionEspecial,
+                    observaciones, duenio.getIdMascota(), duenio.getNombreMascota());
 
             mascoSer.editarMascota(mas);
             modelo.put("exito", "mascota editada correctamente");
             return "redirect:../lista";
-
 
         } catch (MiException e) {
 

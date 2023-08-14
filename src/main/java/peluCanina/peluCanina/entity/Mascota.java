@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import peluCanina.peluCanina.enums.Sino;
 
-
 @Entity
 @Data
 @AllArgsConstructor
@@ -16,13 +15,15 @@ public class Mascota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;  
+    private String nombre;
     private String raza;
     private String color;
 
     private String alergico;
     private String atencionEspecial;
     private String observaciones;
-    @ManyToOne @JoinColumn(name="duenio_id")
-    private Duenio duenio;
+//    @ManyToOne @JoinColumn(name="duenio_id")
+//    private Duenio duenio;
+    private Long idDuenio;
+    private String nombreDuenio;
 }

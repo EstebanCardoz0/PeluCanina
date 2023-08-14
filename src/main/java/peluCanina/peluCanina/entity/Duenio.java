@@ -8,7 +8,6 @@ import java.util.List;
 
 import jakarta.persistence.*;
 
-
 @Entity
 @Data
 @AllArgsConstructor
@@ -22,8 +21,10 @@ public class Duenio {
     private String celular;
     private String direccion;
 
-    @OneToMany(mappedBy = "duenio", cascade = CascadeType.ALL)
-
-
-    private List<Mascota> mascotas;
+//    @OneToMany(mappedBy = "duenio", cascade = CascadeType.ALL)
+//
+//
+//    private List<Mascota> mascotas;
+    private Long idMascota;
+    private String nombreMascota;
 }

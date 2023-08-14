@@ -40,6 +40,8 @@ public class DuenioController {
         duen.setNombre(nombre);
         duen.setCelular(celular);
         duen.setDireccion(direccion);
+        duen.setIdMascota(null);
+        duen.setNombreMascota(null);
 
         duenioSer.crearDuenio(duen);
         modelo.put("éxito", "El dueño fue creado correctamente");
@@ -60,8 +62,8 @@ public class DuenioController {
     public String editar(@PathVariable Long id, ModelMap modelo) {
 
         Duenio duen = duenioSer.traerDuenio(id);
-        List<Mascota> mascotas = duen.getMascotas();
-        modelo.addAttribute("mascotas", mascotas);
+//        List<Mascota> mascotas = duen.getMascotas();
+//        modelo.addAttribute("mascotas", mascotas);
 
         modelo.put("duenio", duen);
 
@@ -92,23 +94,23 @@ public class DuenioController {
     @GetMapping("/borrar/{id}")
     public String borrarDuenio(RedirectAttributes redirectAttributes, @PathVariable Long id, ModelMap modelo) {
 
-        try {
-            Duenio duen = duenioSer.traerDuenio(id);
-            List<Mascota> mascotas = duen.getMascotas();
-
-            for (Mascota mascota : mascotas) {
-                mascota.setDuenio(null);
-                mascoSer.editarMascota(mascota);
-
-            }
-
-            duenioSer.borrarDuenio(id);
-            return "redirect:../lista";
-        } catch (MiException e) {
-
-            modelo.put("error", e.getMessage());
-            return "duenioLista.html";
-        }
+//        try {
+//            Duenio duen = duenioSer.traerDuenio(id);
+//            List<Mascota> mascotas = duen.getMascotas();
+//            
+//            for (Mascota mascota : mascotas) {
+//                mascota.setDuenio(null);
+//                mascoSer.editarMascota(mascota);
+//                
+//            }
+//            
+        duenioSer.borrarDuenio(id);
+        return "redirect:../lista";
+//        } catch (MiException e) {
+//
+//            modelo.put("error", e.getMessage());
+//            return "duenioLista.html";
+//        }
 
     }
 

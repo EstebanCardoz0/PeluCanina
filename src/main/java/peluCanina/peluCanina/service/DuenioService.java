@@ -70,12 +70,10 @@ public class DuenioService implements IDuenioService {
 
     }
 
-
-
     @Override
     @Transactional
     public List<Duenio> listarDueniosConMascotas() {
-        return duenioRepo.findAllWithMascotas();
-
+//        return duenioRepo.findAllWithMascotas();
+        return null;
     }
 }
