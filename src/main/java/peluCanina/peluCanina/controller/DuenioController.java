@@ -35,14 +35,14 @@ public class DuenioController {
 
     @PostMapping("/crear")
     public String crearDueni(@RequestParam String nombre,
-                             @RequestParam String celular, @RequestParam String direccion, ModelMap modelo) {
+            @RequestParam String celular, @RequestParam String direccion, ModelMap modelo) {
 
         Duenio duen = new Duenio();
         duen.setNombre(nombre);
         duen.setCelular(celular);
         duen.setDireccion(direccion);
-        duen.setIdMascota(null);
-        duen.setNombreMascota(null);
+        duen.setIdMascota(0L);
+        duen.setNombreMascota("NO");
 
         duenioSer.crearDuenio(duen);
         modelo.put("éxito", "El dueño fue creado correctamente");
@@ -53,7 +53,7 @@ public class DuenioController {
     @GetMapping("lista")
     public String lista(ModelMap modelo) {
 
-        List<Duenio> duenios = duenioSer.listarDueniosConMascotas();
+        List<Duenio> duenios = duenioSer.listarDuenios();
         modelo.addAttribute("duenios", duenios);
         return "duenioLista.html";
 
@@ -72,7 +72,8 @@ public class DuenioController {
     }
 
     @PostMapping("/editar/{id}")
-    public String editar(@PathVariable Long id, String nombre, String celular, String direccion, ModelMap modelo) {
+    public String editar(@PathVariable Long id, String nombre, String celular, String direccion,
+            Long idMascota, String nombreMascota, ModelMap modelo) {
 
         try {
             Duenio duen = new Duenio();
@@ -80,6 +81,8 @@ public class DuenioController {
             duen.setCelular(celular);
             duen.setNombre(nombre);
             duen.setDireccion(direccion);
+            duen.setIdMascota(idMascota);
+            duen.setNombreMascota(nombreMascota);
 
             duenioSer.editarDuenio(duen);
             return "redirect:../lista";
@@ -113,7 +116,6 @@ public class DuenioController {
                 mascoSer.editarMascota(mascot);
             }
         }
-
 
         duenioSer.borrarDuenio(id);
         return "redirect:../lista";

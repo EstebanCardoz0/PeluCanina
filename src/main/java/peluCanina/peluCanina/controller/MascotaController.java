@@ -99,10 +99,14 @@ public class MascotaController {
 
             mascoSer.editarMascota(mas);
 
+            Duenio duen = duenio;
+            System.out.println("duen 1111" + duen.toString());
+            duen.setIdMascota(id);
+            duen.setNombreMascota(nombre);
 
-            duenio.setIdMascota(id);
-            duenio.setNombre(nombre);
-            duenioSer.editarDuenio(duenio);
+            duenioSer.editarDuenio(duen);
+
+            System.out.println("duen 2" + duen.toString());
 
             modelo.put("exito", "mascota editada correctamente");
             return "redirect:../lista";
