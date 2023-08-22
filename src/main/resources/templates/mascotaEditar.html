@@ -83,8 +83,11 @@
         <label for="duenios">Dueño</label>
         <select id="duenios" name="duenio">
 
+<!--            <option th:each="duenio : ${duenios}" th:value="${duenio.id}" th:text="${duenio.nombre}"-->
+<!--                    th:selected="${duenio?.idDuenio == mascota?.idDuenio?}"></option> -->
+
             <option th:each="duenio : ${duenios}" th:value="${duenio.id}" th:text="${duenio.nombre}"
-                    th:selected="${duenio?.id == mascota?.duenio?.id}"></option>
+                    ></option>
         </select>
     </div>
 

@@ -1,12 +1,11 @@
 package peluCanina.peluCanina.entity;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-
-import jakarta.persistence.*;
 
 @Entity
 @Data
@@ -14,17 +13,14 @@ import jakarta.persistence.*;
 @NoArgsConstructor
 public class Duenio {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private String celular;
     private String direccion;
+    @OneToMany(mappedBy = "duen")
+    private List <Mascota> mascotas;
 
-//    @OneToMany(mappedBy = "duenio", cascade = CascadeType.ALL)
-//
-//
-//    private List<Mascota> mascotas;
-    private Long idMascota;
-    private String nombreMascota;
 }
