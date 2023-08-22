@@ -16,6 +16,7 @@
                     <th>Alergico</th>
                     <th>Atención Especial</th>
                     <th>Observaciones</th>
+                    <th>ID Dueño</th>
                     <th>Dueño</th>
                     <th colspan="2">Acciones</th>
 
@@ -33,8 +34,17 @@
                     <td th:text="${masco.observaciones}"></td>
 
                     <td>
+<<<<<<< HEAD
                         <span th:if="${masco.idDuenio != null}" th:text="${masco.nombreDuenio}"></span>
                         <span th:if="${masco.idDuenio == null}">(No tiene)</span>
+=======
+                        <span th:if="${masco.idDuenio != null}" th:text="${masco.idDuenio}"    ></span>
+                        <span th:if="${masco.idDuenio == null }">(No tiene)</span>
+                    </td>
+                    <td>
+                        <span th:if="${masco.idDuenio != null}" th:text="${masco.nombreDuenio}"    ></span>
+                        <span th:if="${masco.idDuenio == null }">(No tiene)</span>
+>>>>>>> 550ac97d4228a4bb63b365d32af4d007bdf27069
                     </td>
                     <td>
                         <a th:href="@{/mascota/editar/__${masco.id}__}"><i></i>Modificar</a>
