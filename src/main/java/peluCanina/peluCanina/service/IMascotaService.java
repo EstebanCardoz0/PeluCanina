@@ -1,6 +1,7 @@
 package peluCanina.peluCanina.service;
 
 import java.util.List;
+import peluCanina.peluCanina.DTO.DTOMascota;
 import peluCanina.peluCanina.entity.Mascota;
 
 public interface IMascotaService {
@@ -10,6 +11,10 @@ public interface IMascotaService {
     public Mascota traerMascota(Long id);
 
     public List<Mascota> listarMascotas();
+
+    public List<DTOMascota> listarMascotasDTO();
+
+    public DTOMascota traerMascotaDTO(Long id);
 
     public void borrarMascota(Long id);
 

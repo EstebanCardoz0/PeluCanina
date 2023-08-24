@@ -3,6 +3,7 @@ package peluCanina.peluCanina.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import peluCanina.peluCanina.DTO.DTOMascota;
 import peluCanina.peluCanina.entity.Duenio;
 import peluCanina.peluCanina.entity.Mascota;
 import peluCanina.peluCanina.service.IMascotaService;
@@ -21,16 +22,16 @@ public class MascotaController {
         return "La mascota se creó correctamente";
     }
 
-    @GetMapping("/traer")
-    public Mascota traerMascota(Long id) {
-        return mascoSer.traerMascota(id);
+    @GetMapping("/traer/{id}")
+    public DTOMascota traerMascota(@PathVariable Long id) {
+        return mascoSer.traerMascotaDTO(id);
 
     }
 
     @GetMapping("/listar")
-    public List<Mascota> listarMascotas() {
+    public List<DTOMascota> listarMascotas() {
 
-        return mascoSer.listarMascotas();
+        return mascoSer.listarMascotasDTO();
     }
 
     @DeleteMapping("/borrar/{id}")

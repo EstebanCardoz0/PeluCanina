@@ -16,7 +16,7 @@ public class Duenio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;    
     private String nombre;
     private String celular;
     private String direccion;

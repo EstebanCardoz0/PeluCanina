@@ -24,5 +24,5 @@ public class DTOMascota implements Serializable{
     private String alergico;
     private String observaciones;
     private String nombreDuenio;
-    private Long idDuenio;
+    private String idDuenio;
 }
