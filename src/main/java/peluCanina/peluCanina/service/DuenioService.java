@@ -47,7 +47,7 @@ public class DuenioService implements IDuenioService {
 
         for (DTOMascota masco : mascoService.listarMascotasDTO()) {
 
-            if (masco.getIdDuenio() == id.toString()) {
+            if (masco.getIdDuenio().equals(id.toString())) {
 
                 mascosDTO.add(masco);
 
@@ -83,16 +83,18 @@ public class DuenioService implements IDuenioService {
 
             for (DTOMascota masco : mascoService.listarMascotasDTO()) {
 
-                if (masco.getIdDuenio() == duen.getId().toString()) {
+                if (masco.getIdDuenio().equals(duen.getId().toString())) {
 
                     mascosDTO.add(masco);
 
-                }
+                }//final if
 
-            }
+                dtoDuen.setMascosDTO(mascosDTO);
 
-            dtoDuen.setMascosDTO(mascosDTO);
-        }
+            }//final for lista mascos
+
+            listarDuenios.add(dtoDuen);
+        }//final for
 
         return listarDuenios;
     }
@@ -110,7 +112,7 @@ public class DuenioService implements IDuenioService {
         du.setNombre(duen.getNombre());
         du.setCelular(duen.getCelular());
         du.setDireccion(duen.getDireccion());
-        du.setMascotas(duen.getMascotas());
+//        du.setMascotas(duen.getMascotas());
 
         this.crearDuenio(du);
     }

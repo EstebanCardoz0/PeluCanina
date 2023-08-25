@@ -2,6 +2,7 @@ package peluCanina.peluCanina.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import static java.util.Optional.empty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import peluCanina.peluCanina.DTO.DTODuenio;
@@ -38,8 +39,14 @@ public class MascotaService implements IMascotaService {
         dtoMasco.setAlergico(masco.getAlergico());
         dtoMasco.setAtencionEspecial(masco.getAtencionEspecial());
         dtoMasco.setObservaciones(masco.getObservaciones());
-        dtoMasco.setNombreDuenio(masco.getDuen().getNombre());
-        dtoMasco.setIdDuenio(masco.getDuen().getId().toString());
+        if (masco.getDuen() != null) {
+            dtoMasco.setIdDuenio(masco.getDuen().getId().toString());
+            dtoMasco.setNombreDuenio(masco.getDuen().getNombre());
+
+        } else {
+            dtoMasco.setIdDuenio("-");
+            dtoMasco.setNombreDuenio("No tiene");
+        }
 
         return dtoMasco;
     }

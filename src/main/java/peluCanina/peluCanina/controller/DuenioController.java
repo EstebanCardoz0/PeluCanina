@@ -35,21 +35,27 @@ public class DuenioController {
     }
 
     @DeleteMapping("/borrar/{id}")
-    public void borrarDuenio(@PathVariable Long id) {
+    public String borrarDuenio(@PathVariable Long id) {
 
         duenSer.borrarDuenio(id);
+        return "Dueño borrado con éxito";
     }
 
     @PutMapping("/editar/{id}")
-    public Duenio editarDuenio(@PathVariable Long id, @RequestParam String nombre,
-            @RequestParam String celular, @RequestParam String direccion,
-            @RequestParam List<Mascota> mascotas) {
+    public DTODuenio editarDuenio(@PathVariable Long id, @RequestParam String nombre,
+            @RequestParam String celular, @RequestParam String direccion) {
 
-        Duenio duen = new Duenio(id, nombre, celular, direccion, mascotas);
+        Duenio duen = new Duenio();
+        duen.setNombre(nombre);
+        duen.setDireccion(direccion);
+        duen.setCelular(celular);
+        duen.setId(id);
+        
+//        duen.setMascotas(mascotas);
 
         duenSer.editarDuenio(duen);
 
-        return duenSer.traerDuenio(id);
+        return duenSer.traerDuenioDTO(id);
 
     }
 
