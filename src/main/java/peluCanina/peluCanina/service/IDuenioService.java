@@ -17,5 +17,7 @@ public interface IDuenioService {
     public void editarDuenio(Duenio duen);
 
     public List<DTODuenio> listarDueniosDTO();
+    
+
     public DTODuenio traerDuenioDTO(Long id);
 }
