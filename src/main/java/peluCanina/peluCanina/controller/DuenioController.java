@@ -44,7 +44,7 @@ public class DuenioController {
 
     @PutMapping("/editar/{id}")
     public DTODuenio editarDuenio(@PathVariable Long id, @RequestParam String nombre,
-            @RequestParam String celular, @RequestParam String direccion, @RequestBody List<Long> ids) {
+            @RequestParam String celular, @RequestParam String direccion) {
 
         Duenio duen = new Duenio();
         duen.setNombre(nombre);
@@ -52,30 +52,7 @@ public class DuenioController {
         duen.setCelular(celular);
         duen.setId(id);
 
-        List<Mascota> mascos = new ArrayList();
-
-        for (Long ides : ids) {
-
-            for (Duenio dus : duenSer.listarDuenios()) {
-
-                for (Mascota mascota : dus.getMascotas()) {
-
-                    if (ides == mascota.getId()) {
-                        mascos.add(mascota);
-                    }
-
-                }
-            }
-
-        }
-
-        if (!mascos.isEmpty()) {
-            duen.setMascotas(mascos);
-            System.out.println("ESTABA LLENO");
-        } else {
-            duen.setMascotas(null);
-            System.out.println("ESTABA VACIO");
-        }
+   
 
         duenSer.editarDuenio(duen);
 

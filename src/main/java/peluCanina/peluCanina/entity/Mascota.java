@@ -21,7 +21,7 @@ public class Mascota {
     private String alergico;
     private String observaciones;
     @ManyToOne
-    @JoinColumn(name = "mascotas")
+    @JoinColumn(name = "duenio")
     private Duenio duen;
 
 }

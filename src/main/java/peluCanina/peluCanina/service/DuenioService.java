@@ -113,7 +113,8 @@ public class DuenioService implements IDuenioService {
         du.setCelular(duen.getCelular());
         du.setDireccion(duen.getDireccion());
         du.setMascotas(duen.getMascotas());
-//        System.out.println(duen.getMascotas().get(1));
+        
+        
         this.crearDuenio(du);
     }
 
