@@ -2,10 +2,8 @@ package peluCanina.peluCanina.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import static java.util.Optional.empty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import peluCanina.peluCanina.DTO.DTODuenio;
 import peluCanina.peluCanina.DTO.DTOMascota;
 import peluCanina.peluCanina.entity.Mascota;
 import peluCanina.peluCanina.repository.IMascotaRepository;
@@ -61,7 +59,7 @@ public class MascotaService implements IMascotaService {
 
         List<DTOMascota> listarMascotas = new ArrayList();
 
-        for (Mascota masco : mascoRepo.findAll()) {
+        for (Mascota masco : this.listarMascotas()) {
 
             DTOMascota dtoMasco = new DTOMascota();
 

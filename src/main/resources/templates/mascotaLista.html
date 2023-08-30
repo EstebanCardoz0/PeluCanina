@@ -34,18 +34,20 @@
                     <td th:text="${masco.observaciones}"></td>
 
                     <td>
-<<<<<<< HEAD
-                        <span th:if="${masco.idDuenio != null}" th:text="${masco.nombreDuenio}"></span>
-                        <span th:if="${masco.idDuenio == null}">(No tiene)</span>
-=======
-                        <span th:if="${masco.idDuenio != null}" th:text="${masco.idDuenio}"    ></span>
-                        <span th:if="${masco.idDuenio == null }">(No tiene)</span>
+
+                        <span th:if="${masco.duen != null}" th:text="${masco.duen.id}"></span>
+                        <span th:if="${masco.duen == null}">(No tiene)</span>
+
                     </td>
                     <td>
-                        <span th:if="${masco.idDuenio != null}" th:text="${masco.nombreDuenio}"    ></span>
-                        <span th:if="${masco.idDuenio == null }">(No tiene)</span>
->>>>>>> 550ac97d4228a4bb63b365d32af4d007bdf27069
+
+                        <span th:if="${masco.duen != null}" th:text="${masco.duen.nombre}"></span>
+                        <span th:if="${masco.duen == null}">(No tiene)</span>
+
                     </td>
+
+
+
                     <td>
                         <a th:href="@{/mascota/editar/__${masco.id}__}"><i></i>Modificar</a>
                     </td>

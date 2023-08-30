@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import peluCanina.peluCanina.DTO.DTODuenio;
 import peluCanina.peluCanina.DTO.DTOMascota;
 import peluCanina.peluCanina.entity.Duenio;
-import peluCanina.peluCanina.entity.Mascota;
 import peluCanina.peluCanina.repository.IDuenioRepository;
 
 @Service
@@ -70,7 +69,7 @@ public class DuenioService implements IDuenioService {
 
         List<DTODuenio> listarDuenios = new ArrayList();
 
-        for (Duenio duen : duenioRepo.findAll()) {
+        for (Duenio duen : this.listarDuenios()) {
 
             DTODuenio dtoDuen = new DTODuenio();
 
@@ -87,14 +86,14 @@ public class DuenioService implements IDuenioService {
 
                     mascosDTO.add(masco);
 
-                }//final if
+                }
 
                 dtoDuen.setMascosDTO(mascosDTO);
 
-            }//final for lista mascos
+            }
 
             listarDuenios.add(dtoDuen);
-        }//final for
+        }
 
         return listarDuenios;
     }
@@ -113,8 +112,7 @@ public class DuenioService implements IDuenioService {
         du.setCelular(duen.getCelular());
         du.setDireccion(duen.getDireccion());
         du.setMascotas(duen.getMascotas());
-        
-        
+
         this.crearDuenio(du);
     }
 
